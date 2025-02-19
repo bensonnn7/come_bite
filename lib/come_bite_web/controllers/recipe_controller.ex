@@ -3,7 +3,7 @@ defmodule ComeBiteWeb.RecipeController do
   alias ComeBite.Recipes
   alias ComeBite.Recipes.Recipe
 
-  action_fallback ComeBiteWeb.FallbackController
+  # action_fallback ComeBiteWeb.FallbackController
 
   # Lists all recipes
   def index(conn, _params) do
@@ -23,7 +23,8 @@ defmodule ComeBiteWeb.RecipeController do
       {:ok, recipe} ->
         conn
         |> put_status(:created)
-        |> put_resp_header("location", Routes.recipe_path(conn, :show, recipe))
+        # TODO: FIX Routes.recipe_path undefined
+        # |> put_resp_header("location", Routes.recipe_path(conn, :show, recipe))
         |> json(%{data: recipe})
 
       {:error, %Ecto.Changeset{} = changeset} ->

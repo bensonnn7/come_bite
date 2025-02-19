@@ -10,6 +10,7 @@ defmodule ComeBiteWeb.Router do
 
     # Example API route
     resources "/recipes", RecipeController, except: [:new, :edit]
+    get "/generate_meal", MealPlannerController, :generate_meal
   end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development
