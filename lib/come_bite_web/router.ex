@@ -9,7 +9,7 @@ defmodule ComeBiteWeb.Router do
     pipe_through :api
 
     # Example API route
-    get "/welcome", ApiController, :welcome
+    resources "/recipes", RecipeController, except: [:new, :edit]
   end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development
