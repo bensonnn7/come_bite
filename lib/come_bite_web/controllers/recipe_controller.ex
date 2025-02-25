@@ -2,6 +2,7 @@ defmodule ComeBiteWeb.RecipeController do
   use ComeBiteWeb, :controller
   alias ComeBite.Recipes
   alias ComeBite.Recipes.Recipe
+  alias ComeBite.Crawler
 
   # action_fallback ComeBiteWeb.FallbackController
 
@@ -56,5 +57,13 @@ defmodule ComeBiteWeb.RecipeController do
     with {:ok, %Recipe{}} <- Recipes.delete_recipe(recipe) do
       send_resp(conn, :no_content, "")
     end
+  end
+
+  def crawl(conn, _params) do
+    url = "https://mip.xiachufang.com/recipe/106499878/"
+    recipe = Crawler.fetch_XCF_menu(url)
+
+    # json(conn, %{recipe: recipe})
+    json(conn, %{recipe: recipe})
   end
 end

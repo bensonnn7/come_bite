@@ -8,7 +8,8 @@ defmodule ComeBiteWeb.Router do
   scope "/api", ComeBiteWeb do
     pipe_through :api
 
-    # Example API route
+    # Add a custom route for scraping
+    get "/recipes/crawl_menu", RecipeController, :crawl
     resources "/recipes", RecipeController, except: [:new, :edit]
     get "/generate_meal", MealPlannerController, :generate_meal
   end
