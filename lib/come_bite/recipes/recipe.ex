@@ -10,6 +10,7 @@ defmodule ComeBite.Recipes.Recipe do
     field :flavor, {:array, :integer}
     field :images, {:array, :string}
     field :cooking_time, :integer
+    field :meat_type, :string
 
     timestamps(type: :utc_datetime)
   end
